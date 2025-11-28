@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Message</title>
+<style>
+body {
+  margin:0; padding:0; font-family:'Poppins',sans-serif; text-align:center; 
+  overflow:hidden; background:#ffe6ff; position:relative; color:#ff2e98;
+}
+h1 {
+  margin-top:40px; font-size:32px; text-shadow:1px 1px 3px #fff; position:relative; z-index:2;
+}
+.scroll {
+  background: #fff8e1; /* paper color */
+  border: 2px solid #ffcc80;
+  border-radius: 15px;
+  width: 80%;
+  max-width:700px;
+  margin: 20px auto;
+  padding: 30px 40px 30px 100px;
+  text-align:left;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  font-size: 18px;
+  line-height:1.6;
+  position:relative;
+  z-index:2;
+}
+.cat {
+  width:80px;
+  position:absolute;
+  top:20px;
+  left:10px;
+  border-radius:10px;
+  z-index:3;
+}
+.back {
+  display:inline-block; margin-top:15px; padding:10px 20px; border-radius:20px; font-size:16px;
+  background:#ff2e98; color:white; text-decoration:none; position:relative; z-index:2;
+}
+.heart {
+  position: absolute; width:20px; height:20px; background:red; transform:rotate(-45deg); z-index:1;
+}
+.heart::before, .heart::after { content:''; position:absolute; width:20px; height:20px; background:red; border-radius:50%; }
+.heart::before { top:-10px; left:0; } .heart::after { top:0; left:10px; }
+
+.typewriter-text {
+  display:inline-block;
+  white-space:pre-wrap;
+  overflow:hidden;
+  border-right: .15em solid #ff2e98;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink { 50% { border-color: transparent; } }
+</style>
+</head>
+<body>
+
+<h1>📖 Birthday Wishes!</h1>
+
+<div class="scroll">
+  <img src="https://i.pinimg.com/736x/0f/11/4f/0f114f333dee7076a7e3277705123310.jpg" class="cat" alt="Sleeping Cat">
+  <div id="typewriter" class="typewriter-text"></div>
+</div>
+
+<a class="back" href="index.html">← Back to Home</a>
+
+<script>
+// Falling hearts background
+for(let i=0;i<50;i++){
+  let h=document.createElement('div');
+  h.className='heart';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animation=`fall ${3+Math.random()*4}s linear infinite`;
+  document.body.appendChild(h);
+}
+
+// Typewriter essay text
+const text = `Dear Chandni, 🎉
+
+Happy Birthday! I hope today fills your heart with happiness and your day with countless smiles. You are such a wonderful person, and I am so glad to have the chance to wish you on this special day. 🐱✨
+
+May your year ahead be full of exciting adventures, sweet surprises, and all the things that make you happiest. Always remember how amazing you are and how much joy you bring to the people around you. 💖
+
+Take today to celebrate yourself – laugh a lot, eat cake, and enjoy every moment! You deserve every bit of love and happiness that comes your way. 🥳
+
+Keep shining with your beautiful spirit and never stop being the cheerful, kind, and wonderful person you are. I hope this year brings you closer to your dreams and fills your life with unforgettable memories. 🌸
+
+Happy Birthday again, Chandni! 🎂🎈 May all your wishes come true today and always.`;
+
+let index = 0;
+const speed = 50;
+
+function typeWriter() {
+  if(index < text.length){
+    document.getElementById('typewriter').innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, speed);
+  }
+}
+typeWriter();
+</script>
+
+</body>
+</html>
